@@ -177,7 +177,7 @@ def comment(request,image_id):
             
             print(comments)
 
-        return redirect(index)
+        return redirect(all_hairstyle)
 
     else:
         form = CommentForm()

@@ -5,59 +5,115 @@
 
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-4">
-    {%for image in all_images%}
     
-    <div class="card">
-      <a href="{% url 'showprofile' id=image.profile.id %}">
-            <img src="{{image.profile_details.profile_pic.cdn_url}}" class="rounded-circle"
-            style="width:10%; height:auto" alt="" />
-        {{image.profile.username}}   
-      </a>
-      <hr>
+<div class="row">
+        {%for image in all_images%}
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                    <a href="{% url 'showprofile' id=image.profile.id %}">
+                            <img src="{{image.profile_details.profile_pic.cdn_url}}" class="rounded-circle"
+                            style="width:10%; height:auto" alt="" />
+                        {{image.profile.username}}   
+                      </a>
+            </div>
 
-        <div class="card-img-top">
-                <img src="{{image.pic.url}}" class="card-img-top" alt="Image"></div>
-                <div class="container">
+            <div class="card-body">
+                    <img src="{{image.pic.url}}" class="card-img-top" alt="Image" style="height:200px; width:300px">
+            </div>
+
+            <div class="card-title">
                     <ul class="list-inline">
-                        <li class="list-inline-item">
-                            <a href=" {% url 'like' image_id=image.id %}">
-                                <i class="fa fa-heart-o fa-3x" style="color: #1e4faa" aria-hidden="true"></i></a>
+                            <li class="list-inline-item">
+                                <a href=" {% url 'like' image_id=image.id %}">
+                                    <i class="fa fa-heart-o fa-3x" style="color: #1e4faa" aria-hidden="true"></i></a>
+    
+                                <a href=" {% url 'comment' image_id=image.id %}">
+                                    <i class="fa fa-comment-o fa-3x" aria-hidden="true" style="color:#24b824;"></i></a>
+                                <hr>
+                            </li>
+                        </ul>
 
-                            <a href=" {% url 'comment' image_id=image.id %}">
-                                <i class="fa fa-comment-o fa-3x" aria-hidden="true" style="color:#24b824;"></i></a>
-                            <hr>
-                        </li>
-                    </ul>
-                    <h5><strong>{{image.profile.username}}</strong> {{image.caption}}</h5>
+                        <h5><strong>{{image.profile.username}}</strong> {{image.caption}}</h5>
 
-                    <br>
-                    <p></p>{{likes|length}} likes
-                    <p class=""> {{image.comment.count}} comments </p>
+                        <br>
+                        <p></p>{{likes|length}} likes
+                        <p class=""> {{image.comment.count}} comments </p>
+    
+            </div>
+            <div class="card-footer">
+                    {% for comment in comments %}
+                    {% if comment.image_id == image.id%}
+                    <h5><strong>{{comment.comment_owner}}</strong> {{comment.comment}}</h5>
+                    <hr>
 
-                    <div class="card-body ">
-                        {% for comment in comments %}
-                        {% if comment.image_id == image.id%}
-                        <h5><strong>{{comment.comment_owner}}</strong> {{comment.comment}}</h5>
-                        <hr>
-
-                        {% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
-
-
-            </div><br> <br>
-
-            {% empty %}
-            <h2>No images. Follow people to see their images</h2>
-            <p><a href="{% url 'add_hairstyle' %}">Add Image</a></p>
-
+                    {% endif %}
+                    {%endfor%}
+            </div>
+        </div><br>
+    </div><br>
 
     {%endfor%}
 </div>
 </div>
-</div>
+<footer class="footer-distributed">
+        <div class="footer-left">
+            <h5>About <span>Adore Parlour.</span></h5>
+    
+            <p class="footer-links">
+                <a href="#">Home</a>
+                |
+                <a href="#">Treatments</a>
+                |
+                <a href="#">About</a>
+                |
+                <a href="#">Contact</a>
+            </p>
+    
+            <p class="footer-company-name">© 2019 Adore Parlour.<br /> All rights reserved</p>
+        </div>
+    
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>207 - Prestige mall,</span>
+                    Nairobi- 400710</p>
+            </div>
+    
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+254-78-809-956</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:support@Africanstockimages.com">support@adoreparlour.com</a></p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p class="footer-company-about">
+                <span>About Adore Parlour;</span>
+                We value how you look
+            </p>
+            <div class="footer-icons">
+                <a href="https://facebook.com/Ador-Beauty-Parlour-and-Spa-148349699073908/"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
+                <a href="https://instagram.com/ador_beautyparlour_x_spa"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+                <a href="#"><i class="fa fa-google"></i></a>
+            </div>
+        </div>
+    
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="js/jquery-3.4.1.js"></script>
 
 {%endblock%}
