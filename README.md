@@ -1,5 +1,6 @@
 ## Adore Parlour
-Web clone of the Instagram app
+I s a beauty application.
+
 ## Description
 This is an open palour website that gives information about beauty and treatments. A user can only create an account and sign into it when they want to view, comment and like an exciting image. The site supports uploading images,liking and commenting on images as well as following other users. Logged in users can view photos uploaded by other users in the home page of app.
 
@@ -54,7 +55,7 @@ Like functionality not well implemented
 ## Technologies used
 - Python 3.6
 - HTML
-- Bootstrap 3
+- Bootstrap 4
 - Heroku
 - Postgresql
 ## Support and contact details
