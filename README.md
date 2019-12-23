@@ -5,7 +5,7 @@ I s a beauty application.
 This is an open palour website that gives information about beauty and treatments. A user can only create an account and sign into it when they want to view, comment and like an exciting image. The site supports uploading images,liking and commenting on images as well as following other users. Logged in users can view photos uploaded by other users in the home page of app.
 
 ## Link to deployed site
-
+https://parlour-riz.herokuapp.com/
 
 ## Set Up and Installations
 ----------------------------
